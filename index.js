@@ -187,6 +187,11 @@ var del = exports.del = function*(id, path, parameters, access_token) {
 
 var getUserId = exports.getUserId = function*(access_token) {
   var result = yield get('me', [], {fields: 'id'}, access_token);
+  var user   = JSON.parse(user);
 
-  return result;
+  if (!user.hasOwnProperty('id')) {
+    throw new Error('Invalid result from getUserId');
+  }
+
+  return user.id;
 };
