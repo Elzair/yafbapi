@@ -1,4 +1,4 @@
-yet-another-facebook-api
-========================
+yafbapi
+=======
 
-This is yet another Facebook API module for Nodejs.
+**yafbapi** is yet another Facebook API module for Nodejs.
