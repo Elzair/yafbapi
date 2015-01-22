@@ -1,6 +1,6 @@
 {
   "name": "yafbapi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This is yet another Facebook API module for Nodejs.",
   "main": "index.js",
   "scripts": {
