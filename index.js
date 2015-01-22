@@ -188,5 +188,5 @@ var del = exports.del = function*(id, path, parameters, access_token) {
 var getUserId = exports.getUserId = function*(access_token) {
   var result = yield get('me', [], {fields: 'id'}, access_token);
 
-  return result.body;
+  return result;
 };
