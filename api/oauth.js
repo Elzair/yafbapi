@@ -4,7 +4,7 @@ var misc    = require(__dirname + '/../lib/misc')
   , util    = require('util')
   ;
 
-var getLoginUri = exports.getLoginUri = function(parameters) {
+var getLoginDialogUri = exports.getLoginDialogUri = function(parameters) {
   var options = {};
 
   if (!parameters.client_id) {

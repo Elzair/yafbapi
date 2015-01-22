@@ -1,9 +1,9 @@
-var loginApi = require(__dirname + '/api/login')
+var oauthApi = require(__dirname + '/api/oauth')
   , v22Api   = require(__dirname + '/api/v2.2')
   ;
 
 module.exports = {
-    login: loginApi
+    oauth: oauthApi
   , v2: {
       2: v22Api
     }
