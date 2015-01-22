@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/Elzair/yet-another-facebook-api/issues"
   },
-  "homepage": "https://github.com/Elzair/yet-another-facebook-api"
+  "homepage": "https://github.com/Elzair/yet-another-facebook-api",
+  "dependencies": {
+    "co-request": "^0.2.0",
+    "typeof": "^1.0.0"
+  }
 }
