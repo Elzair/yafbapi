@@ -121,7 +121,7 @@ var checkParameters = function(id, path, parameters) {
     throw new Error('Invalid path');
   }
 
-  if (typeOf(path) !== 'object') {
+  if (typeOf(parameters) !== 'object') {
     throw new Error('Invalid parameters');
   }
 };
