@@ -57,7 +57,6 @@ var getLoginUri = exports.getLoginUri = function(parameters) {
   }
 
   var queryString = buildQueryString(options);
-
   var uri = util.format('https://www.facebook.com/dialog/oauth%s',
                         queryString);
 
@@ -95,14 +94,22 @@ var getAccessToken = exports.getAccessToken = function*(parameters) {
 
   options.code = parameters.code;
 
+  if (parameters.state) {
+    options.state = parameters.state;
+  }
+
   var queryString = buildQueryString(options);
 
   var uri = util.format('https://graph.facebook.com/oauth/access_token%s',
                         queryString);
+  var results = yield request(uri);
+  var resultsArr = results.body.split('&');
+  var resultsObj = {
+      access_token: resultsArr[0].split('=')[1]
+    , expires:      resultsArr[1].split('=')[1]
+  };
   
-  var result = yield request(uri);
-
-  return result;
+  return resultsObj;
 };
 
 var checkParameters = function(id, path, parameters) {
@@ -136,7 +143,7 @@ var get = exports.get = function*(id, path, parameters, access_token) {
     , method: 'GET'
   });
 
-  return result;
+  return result.body;
 };
 
 var post = exports.post = function*(id, path, parameters, access_token) {
@@ -155,7 +162,7 @@ var post = exports.post = function*(id, path, parameters, access_token) {
     , json:   true
   });
 
-  return result;
+  return result.body;
 };
 
 var del = exports.del = function*(id, path, parameters, access_token) {
@@ -175,11 +182,11 @@ var del = exports.del = function*(id, path, parameters, access_token) {
     , method: 'DELETE'
   });
 
-  return result;
+  return result.body;
 };
 
 var getUserId = exports.getUserId = function*(access_token) {
   var result = yield get('me', [], {fields: 'id'}, access_token);
 
-  return result;
+  return result.body;
 };
